@@ -1,0 +1,24 @@
+nav a {
+    color: white;
+}
+
+#content {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+#registrationform, #loginform, #feedbackform {
+    margin-top: 100px;
+}
+
+#userinfo {
+    width: 50%;
+    text-align: center;
+}
+
+.feedback {
+    text-align: center;
+}

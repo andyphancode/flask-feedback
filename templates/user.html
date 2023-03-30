@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}
+Hi {{user.username}}
+{% endblock %} 
+
+{% block content %}
+Welcome to the the user page.
+<table class="table table-dark" id="userinfo">
+    <tr>
+        <td>User</td>
+        <td>{{user.username}}</td>
+    </tr>
+    <tr>
+        <td>Email</td>
+        <td>{{user.email}}</td>
+    </tr>
+    <tr>
+        <td>First Name</td>
+        <td>{{user.first_name}}</td>
+    </tr>
+    <tr>
+        <td>Last Name</td>
+        <td>{{user.last_name}}</td>
+    </tr>
+</table>
+<h1>Feedback List</h1>
+{% for feedback in user.feedback %}
+    <div class="feedback">
+        <h2><a href="/feedback/{{feedback.id}}/update">{{feedback.title}}</a></h2>
+        <p>{{feedback.content}}</p>
+        <form action="/feedback/{{feedback.id}}/delete" method="POST">
+            <button class="btn btn-danger">Delete feedback</button>
+        </form>
+    </div>
+{% endfor %}
+<form action="/users/{{session['user_username']}}/feedback/add" method="GET">
+    <button>
+        Add feedback
+    </button>
+</form>
+<form action="/users/{{session['user_username']}}/delete" method="POST">
+    <button>Delete User</button>
+</form>
+
+{% endblock %} 
